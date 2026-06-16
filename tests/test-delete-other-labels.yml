@@ -1,0 +1,30 @@
+name: Test label-sync with delete-other-labels in dry-run
+on:
+  workflow_dispatch:
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6.0.2
+
+      - name: Create minimal label config file
+        run: |
+          cat > /tmp/labels-minimal.yml << 'EOF'
+          - name: bug
+            color: "d73a4a"
+            description: "Something isn't working"
+          EOF
+
+      - name: Run label sync with delete-other-labels in dry-run mode
+        id: action
+        uses: .
+        with:
+          token: ${{ github.token }}
+          config-file: /tmp/labels-minimal.yml
+          dry-run: 'true'
+          delete-other-labels: 'true'
+
+      - name: Assert action completed successfully
+        run: |
+          echo "Action completed with delete-other-labels=true in dry-run mode"
+          echo "PASS"

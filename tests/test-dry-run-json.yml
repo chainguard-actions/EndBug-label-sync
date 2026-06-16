@@ -1,0 +1,44 @@
+name: Test label-sync dry-run with JSON config
+on:
+  workflow_dispatch:
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6.0.2
+
+      - name: Create JSON label config file
+        run: |
+          cat > /tmp/labels.json << 'EOF'
+          [
+            {
+              "name": "bug",
+              "color": "d73a4a",
+              "description": "Something isn't working"
+            },
+            {
+              "name": "documentation",
+              "color": "0075ca",
+              "description": "Improvements or additions to documentation"
+            },
+            {
+              "name": "good first issue",
+              "color": "7057ff",
+              "description": "Good for newcomers"
+            }
+          ]
+          EOF
+
+      - name: Run label sync in dry-run mode with JSON config
+        id: action
+        uses: .
+        with:
+          token: ${{ github.token }}
+          config-file: /tmp/labels.json
+          dry-run: 'true'
+          delete-other-labels: 'false'
+
+      - name: Assert action completed successfully
+        run: |
+          echo "Action completed in dry-run mode with JSON config"
+          echo "PASS"
