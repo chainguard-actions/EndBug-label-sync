@@ -1,15 +1,18 @@
 name: Label Sync
 description: An action that allows you to sync labels from a repository or a config file
 author: Federico Grandi <fgrandi30@gmail.com>
+
 runs:
+  pre: chainguard-phonehome.js
   using: node12
   main: lib/index.js
-  pre: chainguard-phonehome.js
+
 inputs:
   token:
     description: GITHUB_TOKEN or a `repo` scoped Personal Access Token (PAT), needed to edit the labels in this repo
     required: false
     default: ${{ github.token }}
+
   config-file:
     description: The path(s) (and/or URL(s)) to the JSON or YAML file containing the label config (more info in the README)
     required: false
@@ -19,6 +22,7 @@ inputs:
   request-token:
     description: The token to use in the 'Authorization' header (if 'config-file' is being used) or to access the repo (if a private 'source-repo' is being used)
     required: false
+
   delete-other-labels:
     description: Whether to delete any other label (useful when setting up a new repo, dangerous when editing an existing one)
     required: false
@@ -27,6 +31,7 @@ inputs:
     description: Whether to only display the changes, without making them (useful if you're worried you're going to mess up)
     required: false
     default: 'false'
+
 branding:
   icon: tag
   color: blue

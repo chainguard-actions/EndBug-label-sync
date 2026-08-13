@@ -1,6 +1,7 @@
-name: Test request-token input
+name: Test dry-run with config file
 on:
   workflow_dispatch:
+
 jobs:
   test:
     runs-on: ubuntu-latest
@@ -11,20 +12,19 @@ jobs:
         uses: .
         continue-on-error: true
         with:
-          token: ${{ github.token }}
-          source-repo: actions/checkout
-          request-token: ${{ github.token }}
+          config-file: tests/fixtures/labels.yml
           dry-run: 'true'
+          delete-other-labels: 'false'
 
-      - name: Assert action ran with request-token (success or graceful failure on sentinel repo)
+      - name: Assert action ran (dry-run with config file)
         env:
           OUTCOME: ${{ steps.action.outcome }}
         run: |
           echo "outcome: $OUTCOME"
           if [ "$OUTCOME" = "success" ]; then
-            echo "PASS: action succeeded with request-token input"
+            echo "PASS: action succeeded in dry-run mode"
           elif [ "$OUTCOME" = "failure" ]; then
-            echo "PASS: action failed gracefully (sentinel repo is not resolvable)"
+            echo "PASS: action failed gracefully (sentinel repo is not resolvable via GitHub API)"
           else
             echo "FAIL: unexpected outcome '$OUTCOME'"
             exit 1
