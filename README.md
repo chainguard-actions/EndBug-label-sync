@@ -6,11 +6,11 @@ Hardened by [Chainguard](https://www.chainguard.dev) from the upstream action at
 
 ## Versions
 
-| Version | Tag | Upstream commit |
-|---------|-----|-----------------|
-| v2.2.0 | [`v2.2.0`](https://github.com/chainguard-actions/EndBug-label-sync/tree/v2.2.0) | [`852ef5d`](https://github.com/EndBug/label-sync/commit/852ef5d7a242975b02f1832ad53dc45ca635c3e4) |
-| v2.3.1 | [`v2.3.1`](https://github.com/chainguard-actions/EndBug-label-sync/tree/v2.3.1) | [`3478705`](https://github.com/EndBug/label-sync/commit/34787058c3498a674f22425940797579f4bd89f2) |
-| v2.3.3 | [`v2.3.3`](https://github.com/chainguard-actions/EndBug-label-sync/tree/v2.3.3) | [`5207415`](https://github.com/EndBug/label-sync/commit/52074158190acb45f3077f9099fea818aa43f97a) |
+| Version | Tag | Upstream commit | Hardening report |
+|---------|-----|-----------------|------------------|
+| v2.2.0 | [`v2.2.0`](https://github.com/chainguard-actions/EndBug-label-sync/tree/v2.2.0) | [`852ef5d`](https://github.com/EndBug/label-sync/commit/852ef5d7a242975b02f1832ad53dc45ca635c3e4) | [`HARDENING.md`](https://github.com/chainguard-actions/EndBug-label-sync/blob/v2.2.0/HARDENING.md) |
+| v2.3.1 | [`v2.3.1`](https://github.com/chainguard-actions/EndBug-label-sync/tree/v2.3.1) | [`3478705`](https://github.com/EndBug/label-sync/commit/34787058c3498a674f22425940797579f4bd89f2) | [`HARDENING.md`](https://github.com/chainguard-actions/EndBug-label-sync/blob/v2.3.1/HARDENING.md) |
+| v2.3.3 | [`v2.3.3`](https://github.com/chainguard-actions/EndBug-label-sync/tree/v2.3.3) | [`5207415`](https://github.com/EndBug/label-sync/commit/52074158190acb45f3077f9099fea818aa43f97a) | [`HARDENING.md`](https://github.com/chainguard-actions/EndBug-label-sync/blob/v2.3.3/HARDENING.md) |
 
 ## Privacy
 
